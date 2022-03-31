@@ -1,0 +1,22 @@
+.footer {
+  padding: 178px 0;
+  background-color: rgba(20,25,29,0.95);
+  color: #fff;
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include r(576) {
+      flex-direction: column;
+      justify-content: center;
+      gap:20px;
+    }
+  }
+  &__copy,
+  &__digital {
+    font-size: 12px;
+  }
+  &__logo {
+    order: -1;
+  }
+}
