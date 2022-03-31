@@ -79,10 +79,13 @@
     margin-bottom: 50px;
     max-height: 300px;
     overflow: hidden;
-    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+
+    @include r(1024) {
+      max-height: 200px;
+    }
     &.is-open {
       max-height: 100%;
-      transition: max-height 1s ease-in-out;
+
     }
   }
   &__title {
@@ -112,6 +115,9 @@
   @include r(1024) {
     height: 100%;
   }
+  @include r(768) {
+    margin-bottom: 200px;
+  }
   &__wrapper {
     display: flex;
     justify-content: center;
@@ -140,6 +146,9 @@
   background-image: url('../img/biography-logo.png');
   background-repeat: no-repeat;
   background-position: center;
+  @include r(768) {
+    margin-bottom: 100px;
+  }
   &__title {
     margin-bottom: 70px;
   }
