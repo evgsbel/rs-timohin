@@ -75,9 +75,33 @@ $(() => {
 
 });
 
+// read more
+$(() => {
+  var status = "less";
+  let toggleButton = document.querySelectorAll('.read-more');
+  toggleButton.forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      e.preventDefault()
+      if (status == "less") {
+        el.parentNode.firstElementChild.classList.add('is-open')
+        el.innerText = "Скрыть";
+        status = "more";
+      } else if (status == "more") {
+        el.parentNode.firstElementChild.classList.remove('is-open');
+        el.innerText = "Смотреть еще";
+        status = "less"
+        el.parentNode.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        })
+      }
+    })
+  })
+});
+
 // anchors
 $(() => {
-  const anchors = document.querySelectorAll('.nav a[href*="#"]')
+  const anchors = document.querySelectorAll('a[href*="#"]')
 
   for (let anchor of anchors) {
     anchor.addEventListener('click', function (e) {
@@ -115,22 +139,4 @@ $(() => {
   });
 });
 
-// read more
-$(() => {
-  var status = "less";
-  let toggleButton = document.querySelectorAll('.read-more');
-  toggleButton.forEach(function (el) {
-    el.addEventListener('click', function (e) {
-      e.preventDefault()
-      if (status == "less") {
-        el.parentNode.firstElementChild.classList.add('is-open')
-        el.innerText = "Скрыть";
-        status = "more";
-      } else if (status == "more") {
-        el.parentNode.firstElementChild.classList.remove('is-open');
-        el.innerText = "Смотреть еще";
-        status = "less"
-      }
-    })
-  })
-});
+

@@ -62,12 +62,13 @@
 // biography
 
 .biography {
-  height: 100vh;
+  padding: 200px 0;
   background-image: url('../img/biography-logo.png');
   background-repeat: no-repeat;
   background-position: center;
   @include r(1024) {
     height: 100%;
+    padding: 100px 0;
     margin-bottom: 100px;
   }
   &__inner {
@@ -77,15 +78,10 @@
   }
   &__content {
     margin-bottom: 50px;
-    max-height: 300px;
+    max-height: 250px;
     overflow: hidden;
-
-    @include r(1024) {
-      max-height: 200px;
-    }
     &.is-open {
       max-height: 100%;
-
     }
   }
   &__title {
@@ -208,6 +204,34 @@
       line-height: 48px;
       &:not(:last-child) {
         margin-bottom: 50px;
+      }
+    }
+    a {
+      position: relative;
+      width: max-content;
+      word-wrap: normal;
+      font-weight: 400;
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        right: 0;
+        bottom: -2px;
+        width: 0;
+        height: 1px;
+        background-color: #242D36;
+        transition: width 0.5s;
+      }
+      &:hover:after {
+        content: "";
+        width: 100%;
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        height: 1px;
+        background-color: #fe7635;
+        transition: width 0.5s;
       }
     }
   }

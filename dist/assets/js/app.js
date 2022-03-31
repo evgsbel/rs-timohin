@@ -73,10 +73,34 @@ $(function () {
       logo.classList.remove('opened-menu');
     });
   });
+}); // read more
+
+$(function () {
+  var status = "less";
+  var toggleButton = document.querySelectorAll('.read-more');
+  toggleButton.forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      if (status == "less") {
+        el.parentNode.firstElementChild.classList.add('is-open');
+        el.innerText = "Скрыть";
+        status = "more";
+      } else if (status == "more") {
+        el.parentNode.firstElementChild.classList.remove('is-open');
+        el.innerText = "Смотреть еще";
+        status = "less";
+        el.parentNode.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
 }); // anchors
 
 $(function () {
-  var anchors = document.querySelectorAll('.nav a[href*="#"]');
+  var anchors = document.querySelectorAll('a[href*="#"]');
 
   var _iterator = _createForOfIteratorHelper(anchors),
       _step;
@@ -117,26 +141,6 @@ $(function () {
       });
       document.querySelector("[data-target=\"".concat(path, "\"]")).classList.add('is-active');
       el.classList.add('is-active');
-    });
-  });
-}); // read more
-
-$(function () {
-  var status = "less";
-  var toggleButton = document.querySelectorAll('.read-more');
-  toggleButton.forEach(function (el) {
-    el.addEventListener('click', function (e) {
-      e.preventDefault();
-
-      if (status == "less") {
-        el.parentNode.firstElementChild.classList.add('is-open');
-        el.innerText = "Скрыть";
-        status = "more";
-      } else if (status == "more") {
-        el.parentNode.firstElementChild.classList.remove('is-open');
-        el.innerText = "Смотреть еще";
-        status = "less";
-      }
     });
   });
 });
